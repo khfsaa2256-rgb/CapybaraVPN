@@ -18,7 +18,7 @@ final class PacketTunnelProvider: NEPacketTunnelProvider {
         settings.dnsSettings = NEDNSSettings(servers: ["223.5.5.5", "114.114.114.114"])
         // 空 matchDomains = 所有域名走隧道 DNS，使 DNS 查询经过本进程可拦截
         settings.dnsSettings?.matchDomains = []
-        settings.includeAllNetworks = true
+        // includeAllNetworks 仅 macOS 可用；iOS 默认全流量接管（includedRoutes=default 已覆盖）
 
         setTunnelNetworkSettings(settings) { [weak self] error in
             if let error {
