@@ -3,6 +3,7 @@ import SwiftUI
 /// 域名拦截过滤主界面：App 内手动添加/管理域名规则
 struct ContentView: View {
     @StateObject var store: DomainRuleStore
+    @StateObject private var vpn = VPNManager()
     @State private var newDomain = ""
     @State private var newAction: FilterAction = .block
     @State private var filterOn = true
@@ -17,6 +18,34 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             List {
+                Section {
+                    Toggle(isOn: Binding(
+                        get: { vpn.isOn },
+                        set: { on in
+                            if on {
+                                vpn.start()
+                            } else {
+                                vpn.stop()
+                            }
+                        }
+                    )) {
+                        Label(
+                            vpn.isOn ? "VPN 已开启" : "VPN 未开启",
+                            systemImage: vpn.isOn ? "lock.fill" : "lock.open"
+                        )
+                        .foregroundStyle(vpn.isOn ? Color.accentColor : .secondary)
+                    }
+                    if let vpnError = vpn.errorMessage {
+                        Text(vpnError)
+                            .foregroundStyle(.red)
+                            .font(.footnote)
+                    }
+                } header: {
+                    Text("VPN 开关")
+                } footer: {
+                    Text("开启后由系统级 VPN 隧道接管全部流量，按下方规则在 DNS 层拦截域名（App 内任意应用均生效）。未签名安装包需具备 Network Extension 与 App Group 权限，否则可能被系统拦截。")
+                }
+
                 Section {
                     Toggle(isOn: $filterOn) {
                         Label(
@@ -119,8 +148,43 @@ struct ContentView: View {
                         }
                     }
                 }
+
+                if !store.tunnelLogs.isEmpty {
+                    Section {
+                        ForEach(store.tunnelLogs) { log in
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text(log.host)
+                                    .font(.footnote)
+                                    .lineLimit(1)
+                                HStack(spacing: 6) {
+                                    Text("VPN \(log.action.displayName)")
+                                        .font(.caption2)
+                                        .foregroundStyle(log.action == .block ? .red : .orange)
+                                    if let ruleDomain = log.ruleDomain {
+                                        Text("命中：\(ruleDomain)")
+                                            .font(.caption2)
+                                            .foregroundStyle(.secondary)
+                                    }
+                                    Spacer()
+                                    Text(log.at, style: .time)
+                                        .font(.caption2)
+                                        .foregroundStyle(.secondary)
+                                }
+                            }
+                        }
+                    } header: {
+                        Text("隧道拦截日志（VPN）")
+                    }
+                }
             }
             .navigationTitle("域名拦截")
+            .onAppear {
+                vpn.load()
+                store.refreshTunnelLogs()
+            }
+            .onChange(of: vpn.status) { _ in
+                store.refreshTunnelLogs()
+            }
         }
     }
 

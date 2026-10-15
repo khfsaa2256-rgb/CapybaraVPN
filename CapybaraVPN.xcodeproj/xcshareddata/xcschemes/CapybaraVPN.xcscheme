@@ -20,6 +20,20 @@
                ReferencedContainer = "container:CapybaraVPN.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "NO"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "T20000000000000000000001"
+               BuildableName = "CapybaraVPNTunnel.appex"
+               BlueprintName = "CapybaraVPNTunnel"
+               ReferencedContainer = "container:CapybaraVPN.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction

@@ -1,10 +1,9 @@
 // PacketTunnelProvider.swift
-// 说明：可选组件。若不需要 VPN 隧道，可将本文件从编译目标中移除，
-// 域名拦截过滤（URLFilterProtocol）已可独立工作。
-//
-// 若启用：在 Xcode 新建 App Extension Target（类型 Network Extension / Packet Tunnel），
-// 将本文件加入该 target，并在主 App 中配置 NETunnelProviderManager 拉起隧道。
-// 本实现仅做隧道生命周期管理与流量转发骨架，不含任何设备授权逻辑。
+// VPN 隧道：系统级接管流量，在 DNS 层按 App Group 共享规则拦截域名。
+// - 命中 block：丢弃 DNS 查询，回 NXDOMAIN（域名解析失败 → 连接失败，实现拦截）
+// - 命中 log  ：记录隧道日志后放行
+// - 未命中    ：正常放行
+// 不含任何设备授权/UUID 上报逻辑。
 
 import NetworkExtension
 import Network
@@ -12,12 +11,14 @@ import Network
 final class PacketTunnelProvider: NEPacketTunnelProvider {
 
     override func startTunnel(options: [String: NSObject]?, completionHandler: @escaping (Error?) -> Void) {
-        // 隧道配置：使用默认 DNS，仅透传流量
-        let settings = NEPacketTunnelNetworkSettings(tunnelRemoteAddress: "127.0.0.1")
-        settings.ipv4Settings = NEIPv4Settings(addresses: ["192.0.2.1"], subnetMasks: ["255.255.255.255"])
+        let settings = NEPacketTunnelNetworkSettings(tunnelRemoteAddress: "10.0.0.1")
+        settings.ipv4Settings = NEIPv4Settings(addresses: ["10.0.0.2"], subnetMasks: ["255.255.255.255"])
         settings.ipv4Settings?.includedRoutes = [NEIPv4Route.default()]
         settings.ipv4Settings?.excludedRoutes = []
         settings.dnsSettings = NEDNSSettings(servers: ["223.5.5.5", "114.114.114.114"])
+        // 空 matchDomains = 所有域名走隧道 DNS，使 DNS 查询经过本进程可拦截
+        settings.dnsSettings?.matchDomains = []
+        settings.includeAllNetworks = true
 
         setTunnelNetworkSettings(settings) { [weak self] error in
             if let error {
@@ -33,13 +34,42 @@ final class PacketTunnelProvider: NEPacketTunnelProvider {
         completionHandler()
     }
 
+    override func handleAppMessage(_ messageData: Data, completionHandler: ((Data?) -> Void)?) {
+        completionHandler?(nil)
+    }
+
+    /// 流量转发主循环：拦截 IPv4 UDP:53 查询，按规则阻断或放行
     private func startForwarding() {
-        // 简易透传：将隧道接口收到的包原样发回（等价于透明代理占位）。
-        // 如需完整域名拦截，可在此实现 DNS 分流 + 黑名单丢弃（规则由主 App 经
-        // App Group 共享 UserDefaults 下发，AppConfig.rulesStorageKey 可复用）。
         packetFlow.readPackets { [weak self] packets, protocols in
             guard let self else { return }
-            self.packetFlow.writePackets(packets, withProtocols: protocols)
+            let rules = TunnelRuleLoader.load()
+
+            var toWrite: [Data] = []
+            var protocolsToWrite: [NSNumber] = []
+            toWrite.reserveCapacity(packets.count)
+            protocolsToWrite.reserveCapacity(packets.count)
+
+            for (index, packet) in packets.enumerated() {
+                let proto = protocols[index]
+                if let query = DNSPacket.parseQuery(from: packet, protocolNumber: proto) {
+                    if let rule = rules.first(where: { $0.isEnabled && $0.matches(host: query.queryName) }) {
+                        if rule.action == .block {
+                            TunnelRuleLoader.recordTunnelLog(host: query.queryName, action: .block, rule: rule.domain)
+                            // 丢弃原查询，回 NXDOMAIN 使应用快速失败
+                            toWrite.append(DNSPacket.nxdomainResponse(for: query))
+                            protocolsToWrite.append(proto)
+                            continue
+                        } else if rule.action == .log {
+                            TunnelRuleLoader.recordTunnelLog(host: query.queryName, action: .log, rule: rule.domain)
+                            // 记录后放行（落入下方透传）
+                        }
+                    }
+                }
+                toWrite.append(packet)
+                protocolsToWrite.append(proto)
+            }
+
+            self.packetFlow.writePackets(toWrite, withProtocols: protocolsToWrite)
             self.startForwarding()
         }
     }

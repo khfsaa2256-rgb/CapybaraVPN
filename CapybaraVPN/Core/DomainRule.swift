@@ -65,3 +65,12 @@ struct DomainRule: Codable, Identifiable, Equatable {
         return h == d || h.hasSuffix("." + d)
     }
 }
+
+/// 一条 VPN 隧道拦截日志（扩展写入 App Group、主 App 读取展示）
+struct TunnelLogEntry: Codable, Identifiable, Equatable {
+    var id: UUID = UUID()
+    var host: String
+    var action: FilterAction
+    var ruleDomain: String?
+    var at: Date
+}

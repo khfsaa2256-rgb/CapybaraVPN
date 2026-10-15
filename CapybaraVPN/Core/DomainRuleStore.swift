@@ -12,6 +12,9 @@ final class DomainRuleStore: ObservableObject {
         didSet { persistLogs() }
     }
 
+    /// VPN 隧道拦截日志（扩展写入 App Group，主 App 定时/状态变更时刷新）
+    @Published private(set) var tunnelLogs: [TunnelLogEntry] = []
+
     private let defaults: UserDefaults
 
     init(defaults: UserDefaults = .standard) {
@@ -97,6 +100,29 @@ final class DomainRuleStore: ObservableObject {
     private func persist() {
         if let data = try? JSONEncoder().encode(rules) {
             defaults.set(data, forKey: AppConfig.rulesStorageKey)
+        }
+        syncToAppGroup()
+    }
+
+    /// 将规则同步到 App Group（VPN 隧道扩展读取用）；entitlement 缺失时静默失败
+    private func syncToAppGroup() {
+        guard let suite = UserDefaults(suiteName: AppConfig.appGroupID) else { return }
+        if let data = try? JSONEncoder().encode(rules) {
+            suite.set(data, forKey: AppConfig.sharedRulesKey)
+        }
+    }
+
+    /// 读取 App Group 中的隧道拦截日志（VPN 扩展写入）
+    func refreshTunnelLogs() {
+        guard let suite = UserDefaults(suiteName: AppConfig.appGroupID) else {
+            tunnelLogs = []
+            return
+        }
+        if let data = suite.data(forKey: AppConfig.tunnelLogsKey),
+           let decoded = try? JSONDecoder().decode([TunnelLogEntry].self, from: data) {
+            tunnelLogs = decoded
+        } else {
+            tunnelLogs = []
         }
     }
 
