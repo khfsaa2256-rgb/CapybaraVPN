@@ -25,7 +25,7 @@ struct ContentView: View {
                         )
                         .foregroundStyle(filterOn ? Color.accentColor : .secondary)
                     }
-                    .onChange(of: filterOn) { _, on in
+                    .onChange(of: filterOn) { on in
                         if on {
                             FilterEngine.shared.register()
                         } else {

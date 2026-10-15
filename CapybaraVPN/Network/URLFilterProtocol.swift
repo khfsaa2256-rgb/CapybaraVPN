@@ -85,11 +85,11 @@ final class URLFilterProtocol: URLProtocol {
         }
         FilterEngine.shared.store?.record(host: url.host ?? "", url: url.absoluteString, action: .log, rule: rule)
 
-        var forwarded = request
+        var forwarded = (request as NSURLRequest).mutableCopy() as! NSMutableURLRequest
         // 标记已转发，避免潜在循环
-        URLProtocol.setProperty(true, forKey: "Capybara.forwarded", in: &forwarded)
+        URLProtocol.setProperty(true, forKey: "Capybara.forwarded", in: forwarded)
 
-        forwardingTask = Self.forwardingSession.dataTask(with: forwarded) { [weak self] data, response, error in
+        forwardingTask = Self.forwardingSession.dataTask(with: forwarded as URLRequest) { [weak self] data, response, error in
             guard let self else { return }
             if let error {
                 self.client?.urlProtocol(self, didFailWithError: error)
