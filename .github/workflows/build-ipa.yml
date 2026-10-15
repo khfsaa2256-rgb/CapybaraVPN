@@ -1,0 +1,46 @@
+# 云构建免签名 IPA：GitHub Actions + macOS 运行器
+# 用途：编译 CapybaraVPN 并打包成未签名 IPA（Payload/CapybaraVPN.app），
+#       下载后自行签名安装（轻松签/爱思助手/AltStore 等）。
+# 无需任何 Apple 开发者材料，无需配置 Secrets，推送代码后直接 Run workflow。
+#
+# 产物：Actions 运行完成后在 Artifacts 下载 CapybaraVPN-unsigned.ipa
+
+name: Build IPA (unsigned)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode_15.4.app
+
+      - name: Build unsigned app
+        run: |
+          xcodebuild build \
+            -project CapybaraVPN.xcodeproj \
+            -scheme CapybaraVPN \
+            -configuration Release \
+            -sdk iphoneos \
+            -destination 'generic/platform=iOS' \
+            -derivedDataPath $RUNNER_TEMP/DerivedData \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGN_IDENTITY=""
+
+      - name: Package IPA
+        run: |
+          mkdir -p $RUNNER_TEMP/Payload
+          cp -R $RUNNER_TEMP/DerivedData/Build/Products/Release-iphoneos/CapybaraVPN.app $RUNNER_TEMP/Payload/
+          cd $RUNNER_TEMP
+          zip -qry CapybaraVPN-unsigned.ipa Payload
+
+      - name: Upload IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: CapybaraVPN-unsigned.ipa
+          path: $RUNNER_TEMP/CapybaraVPN-unsigned.ipa
