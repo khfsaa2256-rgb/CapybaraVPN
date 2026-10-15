@@ -15,6 +15,9 @@ final class FilterEngine {
     func register() {
         guard !isRegistered else { return }
         URLProtocol.registerClass(URLFilterProtocol.self)
+        // 复刻原版 NSURL swizzle：命中 block 规则时把 URL host 改写为 0.0.0.0（无效地址连接失败即拦截），
+        // 与上方 URLProtocol 的 403 兜底并存：swizzle 在请求构造阶段全局生效，URLProtocol 作为进程内兜底。
+        URLSwizzler.install()
         isRegistered = true
     }
 

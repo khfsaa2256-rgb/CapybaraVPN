@@ -20,6 +20,7 @@
 		00000000000000000000001C /* TunnelRuleLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000000E /* TunnelRuleLoader.swift */; };
 		00000000000000000000001D /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000003 /* AppConfig.swift */; };
 		00000000000000000000001E /* DomainRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000004 /* DomainRule.swift */; };
+		000000000000000000000038 /* URLSwizzler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000039 /* URLSwizzler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		00000000000000000000000F /* Info.plist_tunnel */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist_tunnel; sourceTree = "<group>"; };
 		000000000000000000000010 /* VPNTunnel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VPNTunnel.entitlements; sourceTree = "<group>"; };
 		000000000000000000000011 /* CapybaraVPNTunnel.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CapybaraVPNTunnel.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		000000000000000000000039 /* URLSwizzler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSwizzler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,6 +239,7 @@
 				000000000000000000000017 /* FilterEngine.swift in Sources */,
 				000000000000000000000018 /* URLFilterProtocol.swift in Sources */,
 				000000000000000000000019 /* VPNManager.swift in Sources */,
+				000000000000000000000038 /* URLSwizzler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

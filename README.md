@@ -61,7 +61,7 @@ VPNTunnel (可选，未加入工程默认编译)
 | 设备授权 | Keychain 存 UUID + 登录接口 + RSA 验签 | 已全部移除 |
 | 拦截规则 | 硬编码请求重定向到第三方 IP | App 内手动添加，本地存储 |
 | 服务器依赖 | 依赖原开发者服务器 | 无 |
-| URL swizzle hook | 全局 swizzle NSURL 换 IP | 不使用任何 hook |
+| URL swizzle hook | 全局 swizzle NSURL 换 IP | swizzle NSURL URLWithString: 命中域名改写为 0.0.0.0（无效地址拦截，目标不依赖原版服务器） |
 
 ## 编译（需要一台 Mac）
 
