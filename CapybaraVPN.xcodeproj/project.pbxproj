@@ -117,6 +117,7 @@
 				000000000000000000000006 /* FilterEngine.swift */,
 				000000000000000000000007 /* URLFilterProtocol.swift */,
 				00000000000000000000000A /* VPNManager.swift */,
+				000000000000000000000039 /* URLSwizzler.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
