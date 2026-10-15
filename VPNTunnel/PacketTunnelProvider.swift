@@ -93,7 +93,7 @@ final class PacketTunnelProvider: NEPacketTunnelProvider {
         let connection = NWConnection(host: "223.5.5.5", port: 53, using: .udp)
         connection.stateUpdateHandler = { state in
             guard state == .ready else {
-                if state == .failed || state == .cancelled {
+                if case .failed = state {
                     connection.cancel()
                 }
                 return

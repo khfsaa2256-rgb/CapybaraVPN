@@ -136,7 +136,8 @@ enum DNSPacket {
         let udpLength = (UInt16(bytes[udpOffset + 4]) << 8) | UInt16(bytes[udpOffset + 5])
         let payloadStart = udpOffset + 8
         guard payloadStart <= bytes.count else { return nil }
-        let end = min(udpLength == 0 ? UInt16(bytes.count) : udpOffset + udpLength, UInt16(bytes.count))
+        let rawEnd = min(udpLength == 0 ? bytes.count : udpOffset + Int(udpLength), bytes.count)
+        let end = UInt16(rawEnd)
         guard end > UInt16(payloadStart) else { return nil }
         return packet.subdata(in: payloadStart..<Int(end))
     }
