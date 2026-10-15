@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "T10000000000000000000001"
+               BlueprintIdentifier = "00000000000000000000002C"
                BuildableName = "CapybaraVPN.app"
                BlueprintName = "CapybaraVPN"
                ReferencedContainer = "container:CapybaraVPN.xcodeproj">
@@ -28,7 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "T20000000000000000000001"
+               BlueprintIdentifier = "00000000000000000000002D"
                BuildableName = "CapybaraVPNTunnel.appex"
                BlueprintName = "CapybaraVPNTunnel"
                ReferencedContainer = "container:CapybaraVPN.xcodeproj">
@@ -59,7 +59,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "T10000000000000000000001"
+            BlueprintIdentifier = "00000000000000000000002C"
             BuildableName = "CapybaraVPN.app"
             BlueprintName = "CapybaraVPN"
             ReferencedContainer = "container:CapybaraVPN.xcodeproj">
@@ -76,7 +76,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "T10000000000000000000001"
+            BlueprintIdentifier = "00000000000000000000002C"
             BuildableName = "CapybaraVPN.app"
             BlueprintName = "CapybaraVPN"
             ReferencedContainer = "container:CapybaraVPN.xcodeproj">

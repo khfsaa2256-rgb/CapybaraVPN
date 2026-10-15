@@ -7,50 +7,50 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B10000000000000000000001 /* CapybaraApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000001 /* CapybaraApp.swift */; };
-		B10000000000000000000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000002 /* ContentView.swift */; };
-		B10000000000000000000003 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000003 /* AppConfig.swift */; };
-		B10000000000000000000004 /* DomainRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000004 /* DomainRule.swift */; };
-		B10000000000000000000005 /* DomainRuleStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000005 /* DomainRuleStore.swift */; };
-		B10000000000000000000006 /* FilterEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000006 /* FilterEngine.swift */; };
-		B10000000000000000000007 /* URLFilterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000007 /* URLFilterProtocol.swift */; };
-		B10000000000000000000008 /* VPNManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000000000000000000000A /* VPNManager.swift */; };
-		B20000000000000000000001 /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20000000000000000000001 /* PacketTunnelProvider.swift */; };
-		B20000000000000000000002 /* DNSPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20000000000000000000002 /* DNSPacket.swift */; };
-		B20000000000000000000003 /* TunnelRuleLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20000000000000000000003 /* TunnelRuleLoader.swift */; };
-		B20000000000000000000004 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000003 /* AppConfig.swift */; };
-		B20000000000000000000005 /* DomainRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000004 /* DomainRule.swift */; };
+		000000000000000000000012 /* CapybaraApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000001 /* CapybaraApp.swift */; };
+		000000000000000000000013 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000002 /* ContentView.swift */; };
+		000000000000000000000014 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000003 /* AppConfig.swift */; };
+		000000000000000000000015 /* DomainRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000004 /* DomainRule.swift */; };
+		000000000000000000000016 /* DomainRuleStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000005 /* DomainRuleStore.swift */; };
+		000000000000000000000017 /* FilterEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000006 /* FilterEngine.swift */; };
+		000000000000000000000018 /* URLFilterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000007 /* URLFilterProtocol.swift */; };
+		000000000000000000000019 /* VPNManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000000A /* VPNManager.swift */; };
+		00000000000000000000001A /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000000C /* PacketTunnelProvider.swift */; };
+		00000000000000000000001B /* DNSPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000000D /* DNSPacket.swift */; };
+		00000000000000000000001C /* TunnelRuleLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000000E /* TunnelRuleLoader.swift */; };
+		00000000000000000000001D /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000003 /* AppConfig.swift */; };
+		00000000000000000000001E /* DomainRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000004 /* DomainRule.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		F10000000000000000000001 /* CapybaraApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapybaraApp.swift; sourceTree = "<group>"; };
-		F10000000000000000000002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		F10000000000000000000003 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
-		F10000000000000000000004 /* DomainRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainRule.swift; sourceTree = "<group>"; };
-		F10000000000000000000005 /* DomainRuleStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainRuleStore.swift; sourceTree = "<group>"; };
-		F10000000000000000000006 /* FilterEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterEngine.swift; sourceTree = "<group>"; };
-		F10000000000000000000007 /* URLFilterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLFilterProtocol.swift; sourceTree = "<group>"; };
-		F10000000000000000000008 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F10000000000000000000009 /* CapybaraVPN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CapybaraVPN.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F1000000000000000000000A /* VPNManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNManager.swift; sourceTree = "<group>"; };
-		F1000000000000000000000B /* CapybaraVPN.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CapybaraVPN.entitlements; sourceTree = "<group>"; };
-		F20000000000000000000001 /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
-		F20000000000000000000002 /* DNSPacket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNSPacket.swift; sourceTree = "<group>"; };
-		F20000000000000000000003 /* TunnelRuleLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunnelRuleLoader.swift; sourceTree = "<group>"; };
-		F20000000000000000000004 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F20000000000000000000005 /* VPNTunnel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VPNTunnel.entitlements; sourceTree = "<group>"; };
-		F20000000000000000000006 /* CapybaraVPNTunnel.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CapybaraVPNTunnel.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		000000000000000000000001 /* CapybaraApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapybaraApp.swift; sourceTree = "<group>"; };
+		000000000000000000000002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		000000000000000000000003 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		000000000000000000000004 /* DomainRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainRule.swift; sourceTree = "<group>"; };
+		000000000000000000000005 /* DomainRuleStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainRuleStore.swift; sourceTree = "<group>"; };
+		000000000000000000000006 /* FilterEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterEngine.swift; sourceTree = "<group>"; };
+		000000000000000000000007 /* URLFilterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLFilterProtocol.swift; sourceTree = "<group>"; };
+		000000000000000000000008 /* Info.plist_main */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist_main; sourceTree = "<group>"; };
+		000000000000000000000009 /* CapybaraVPN.app */ = {isa = PBXFileReference; explicitFileType = "wrapper.application"; includeInIndex = 0; path = CapybaraVPN.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		00000000000000000000000A /* VPNManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNManager.swift; sourceTree = "<group>"; };
+		00000000000000000000000B /* CapybaraVPN.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CapybaraVPN.entitlements; sourceTree = "<group>"; };
+		00000000000000000000000C /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
+		00000000000000000000000D /* DNSPacket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNSPacket.swift; sourceTree = "<group>"; };
+		00000000000000000000000E /* TunnelRuleLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunnelRuleLoader.swift; sourceTree = "<group>"; };
+		00000000000000000000000F /* Info.plist_tunnel */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist_tunnel; sourceTree = "<group>"; };
+		000000000000000000000010 /* VPNTunnel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VPNTunnel.entitlements; sourceTree = "<group>"; };
+		000000000000000000000011 /* CapybaraVPNTunnel.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CapybaraVPNTunnel.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		P10000000000000000000002 /* Frameworks */ = {
+		000000000000000000000027 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		P20000000000000000000002 /* Frameworks */ = {
+		00000000000000000000002A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -60,73 +60,73 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		G10000000000000000000001 = {
+		00000000000000000000001F /*  */ = {
 			isa = PBXGroup;
 			children = (
-				G10000000000000000000002 /* CapybaraVPN */,
-				G20000000000000000000001 /* VPNTunnel */,
-				G10000000000000000000003 /* Products */,
+				000000000000000000000020 /* CapybaraVPN */,
+				000000000000000000000025 /* VPNTunnel */,
+				000000000000000000000021 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		G10000000000000000000002 /* CapybaraVPN */ = {
+		000000000000000000000020 /* CapybaraVPN */ = {
 			isa = PBXGroup;
 			children = (
-				G10000000000000000000004 /* App */,
-				G10000000000000000000005 /* Core */,
-				G10000000000000000000006 /* Network */,
-				F10000000000000000000008 /* Info.plist */,
-				F1000000000000000000000B /* CapybaraVPN.entitlements */,
+				000000000000000000000022 /* App */,
+				000000000000000000000023 /* Core */,
+				000000000000000000000024 /* Network */,
+				000000000000000000000008 /* Info.plist */,
+				00000000000000000000000B /* CapybaraVPN.entitlements */,
 			);
 			path = CapybaraVPN;
 			sourceTree = "<group>";
 		};
-		G10000000000000000000003 /* Products */ = {
+		000000000000000000000021 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F10000000000000000000009 /* CapybaraVPN.app */,
-				F20000000000000000000006 /* CapybaraVPNTunnel.appex */,
+				000000000000000000000009 /* CapybaraVPN.app */,
+				000000000000000000000011 /* CapybaraVPNTunnel.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		G10000000000000000000004 /* App */ = {
+		000000000000000000000022 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				F10000000000000000000001 /* CapybaraApp.swift */,
-				F10000000000000000000002 /* ContentView.swift */,
+				000000000000000000000001 /* CapybaraApp.swift */,
+				000000000000000000000002 /* ContentView.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
 		};
-		G10000000000000000000005 /* Core */ = {
+		000000000000000000000023 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				F10000000000000000000003 /* AppConfig.swift */,
-				F10000000000000000000004 /* DomainRule.swift */,
-				F10000000000000000000005 /* DomainRuleStore.swift */,
+				000000000000000000000003 /* AppConfig.swift */,
+				000000000000000000000004 /* DomainRule.swift */,
+				000000000000000000000005 /* DomainRuleStore.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
 		};
-		G10000000000000000000006 /* Network */ = {
+		000000000000000000000024 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				F10000000000000000000006 /* FilterEngine.swift */,
-				F10000000000000000000007 /* URLFilterProtocol.swift */,
-				F1000000000000000000000A /* VPNManager.swift */,
+				000000000000000000000006 /* FilterEngine.swift */,
+				000000000000000000000007 /* URLFilterProtocol.swift */,
+				00000000000000000000000A /* VPNManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
 		};
-		G20000000000000000000001 /* VPNTunnel */ = {
+		000000000000000000000025 /* VPNTunnel */ = {
 			isa = PBXGroup;
 			children = (
-				F20000000000000000000001 /* PacketTunnelProvider.swift */,
-				F20000000000000000000002 /* DNSPacket.swift */,
-				F20000000000000000000003 /* TunnelRuleLoader.swift */,
-				F20000000000000000000004 /* Info.plist */,
-				F20000000000000000000005 /* VPNTunnel.entitlements */,
+				00000000000000000000000C /* PacketTunnelProvider.swift */,
+				00000000000000000000000D /* DNSPacket.swift */,
+				00000000000000000000000E /* TunnelRuleLoader.swift */,
+				00000000000000000000000F /* Info.plist */,
+				000000000000000000000010 /* VPNTunnel.entitlements */,
 			);
 			path = VPNTunnel;
 			sourceTree = "<group>";
@@ -134,13 +134,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		T10000000000000000000001 /* CapybaraVPN */ = {
+		00000000000000000000002C /* CapybaraVPN */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C10000000000000000000001 /* Build configuration list for PBXNativeTarget "CapybaraVPN" */;
+			buildConfigurationList = 000000000000000000000035 /* Build configuration list for PBXNativeTarget "CapybaraVPN" */;
 			buildPhases = (
-				P10000000000000000000001 /* Sources */,
-				P10000000000000000000002 /* Frameworks */,
-				P10000000000000000000003 /* Resources */,
+				000000000000000000000026 /* Sources */,
+				000000000000000000000027 /* Frameworks */,
+				000000000000000000000028 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -148,16 +148,16 @@
 			);
 			name = CapybaraVPN;
 			productName = CapybaraVPN;
-			productReference = F10000000000000000000009 /* CapybaraVPN.app */;
+			productReference = 000000000000000000000009 /* CapybaraVPN.app */;
 			productType = "com.apple.product-type.application";
 		};
-		T20000000000000000000001 /* CapybaraVPNTunnel */ = {
+		00000000000000000000002D /* CapybaraVPNTunnel */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C20000000000000000000001 /* Build configuration list for PBXNativeTarget "CapybaraVPNTunnel" */;
+			buildConfigurationList = 000000000000000000000037 /* Build configuration list for PBXNativeTarget "CapybaraVPNTunnel" */;
 			buildPhases = (
-				P20000000000000000000001 /* Sources */,
-				P20000000000000000000002 /* Frameworks */,
-				P20000000000000000000003 /* Resources */,
+				000000000000000000000029 /* Sources */,
+				00000000000000000000002A /* Frameworks */,
+				00000000000000000000002B /* Resources */,
 			);
 			buildRules = (
 			);
@@ -165,28 +165,30 @@
 			);
 			name = CapybaraVPNTunnel;
 			productName = CapybaraVPNTunnel;
-			productReference = F20000000000000000000006 /* CapybaraVPNTunnel.appex */;
+			productReference = 000000000000000000000011 /* CapybaraVPNTunnel.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		P10000000000000000000004 /* Project object */ = {
+
+
+		00000000000000000000002E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					T10000000000000000000001 = {
+					00000000000000000000002C = {
 						CreatedOnToolsVersion = 15.0;
 					};
-					T20000000000000000000001 = {
+					00000000000000000000002D = {
 						CreatedOnToolsVersion = 15.0;
 					};
 				};
 			};
-			buildConfigurationList = C10000000000000000000002 /* Build configuration list for PBXProject "CapybaraVPN" */;
+			buildConfigurationList = 000000000000000000000036 /* Build configuration list for PBXProject "CapybaraVPN" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -194,26 +196,26 @@
 				en,
 				Base,
 			);
-			mainGroup = G10000000000000000000001;
-			productRefGroup = G10000000000000000000003 /* Products */;
+			mainGroup = 00000000000000000000001F;
+			productRefGroup = 000000000000000000000021 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				T10000000000000000000001 /* CapybaraVPN */,
-				T20000000000000000000001 /* CapybaraVPNTunnel */,
+				00000000000000000000002C /* CapybaraVPN */,
+				00000000000000000000002D /* CapybaraVPNTunnel */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		P10000000000000000000003 /* Resources */ = {
+		000000000000000000000028 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		P20000000000000000000003 /* Resources */ = {
+		00000000000000000000002B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -223,37 +225,37 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		P10000000000000000000001 /* Sources */ = {
+		000000000000000000000026 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B10000000000000000000001 /* CapybaraApp.swift in Sources */,
-				B10000000000000000000002 /* ContentView.swift in Sources */,
-				B10000000000000000000003 /* AppConfig.swift in Sources */,
-				B10000000000000000000004 /* DomainRule.swift in Sources */,
-				B10000000000000000000005 /* DomainRuleStore.swift in Sources */,
-				B10000000000000000000006 /* FilterEngine.swift in Sources */,
-				B10000000000000000000007 /* URLFilterProtocol.swift in Sources */,
-				B10000000000000000000008 /* VPNManager.swift in Sources */,
+				000000000000000000000012 /* CapybaraApp.swift in Sources */,
+				000000000000000000000013 /* ContentView.swift in Sources */,
+				000000000000000000000014 /* AppConfig.swift in Sources */,
+				000000000000000000000015 /* DomainRule.swift in Sources */,
+				000000000000000000000016 /* DomainRuleStore.swift in Sources */,
+				000000000000000000000017 /* FilterEngine.swift in Sources */,
+				000000000000000000000018 /* URLFilterProtocol.swift in Sources */,
+				000000000000000000000019 /* VPNManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		P20000000000000000000001 /* Sources */ = {
+		000000000000000000000029 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B20000000000000000000001 /* PacketTunnelProvider.swift in Sources */,
-				B20000000000000000000002 /* DNSPacket.swift in Sources */,
-				B20000000000000000000003 /* TunnelRuleLoader.swift in Sources */,
-				B20000000000000000000004 /* AppConfig.swift in Sources */,
-				B20000000000000000000005 /* DomainRule.swift in Sources */,
+				00000000000000000000001A /* PacketTunnelProvider.swift in Sources */,
+				00000000000000000000001B /* DNSPacket.swift in Sources */,
+				00000000000000000000001C /* TunnelRuleLoader.swift in Sources */,
+				00000000000000000000001D /* AppConfig.swift in Sources */,
+				00000000000000000000001E /* DomainRule.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		C10000000000000000000003 /* Debug */ = {
+		00000000000000000000002F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -282,7 +284,7 @@
 			};
 			name = Debug;
 		};
-		C10000000000000000000004 /* Release */ = {
+		000000000000000000000030 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -305,7 +307,7 @@
 			};
 			name = Release;
 		};
-		C10000000000000000000005 /* Debug */ = {
+		000000000000000000000031 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = CapybaraVPN/CapybaraVPN.entitlements;
@@ -326,7 +328,7 @@
 			};
 			name = Debug;
 		};
-		C10000000000000000000006 /* Release */ = {
+		000000000000000000000032 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = CapybaraVPN/CapybaraVPN.entitlements;
@@ -347,7 +349,7 @@
 			};
 			name = Release;
 		};
-		C20000000000000000000001 /* Debug */ = {
+		000000000000000000000033 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
@@ -372,7 +374,7 @@
 			};
 			name = Debug;
 		};
-		C20000000000000000000002 /* Release */ = {
+		000000000000000000000034 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
@@ -400,34 +402,35 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C10000000000000000000001 /* Build configuration list for PBXNativeTarget "CapybaraVPN" */ = {
+		000000000000000000000035 /* Build configuration list for PBXNativeTarget "CapybaraVPN" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C10000000000000000000005 /* Debug */,
-				C10000000000000000000006 /* Release */,
+				000000000000000000000031 /* Debug */,
+				000000000000000000000032 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C10000000000000000000002 /* Build configuration list for PBXProject "CapybaraVPN" */ = {
+		000000000000000000000036 /* Build configuration list for PBXProject "CapybaraVPN" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C10000000000000000000003 /* Debug */,
-				C10000000000000000000004 /* Release */,
+				00000000000000000000002F /* Debug */,
+				000000000000000000000030 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C20000000000000000000001 /* Build configuration list for PBXNativeTarget "CapybaraVPNTunnel" */ = {
+		000000000000000000000037 /* Build configuration list for PBXNativeTarget "CapybaraVPNTunnel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C20000000000000000000001 /* Debug */,
-				C20000000000000000000002 /* Release */,
+				000000000000000000000033 /* Debug */,
+				000000000000000000000034 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
 	};
-	rootObject = P10000000000000000000004 /* Project object */;
+	rootObject = 00000000000000000000002E /* Project object */;
 }
