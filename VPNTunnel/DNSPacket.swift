@@ -123,4 +123,67 @@ enum DNSPacket {
         }
         return UInt16(~sum & 0xFFFF)
     }
+
+    /// 提取 IPv4 UDP 包的 UDP payload（DNS 查询字节），用于转发上游 DNS
+    static func udpPayload(from packet: Data, protocolNumber: NSNumber) -> Data? {
+        guard protocolNumber.int32Value == AF_INET else { return nil }
+        let bytes = [UInt8](packet)
+        guard bytes.count >= 28 else { return nil }
+        let ihl = Int(bytes[0] & 0x0F) * 4
+        guard ihl >= 20, bytes.count >= ihl + 8 else { return nil }
+        guard bytes[9] == 17 else { return nil } // UDP
+        let udpOffset = ihl
+        let udpLength = (UInt16(bytes[udpOffset + 4]) << 8) | UInt16(bytes[udpOffset + 5])
+        let payloadStart = udpOffset + 8
+        guard payloadStart <= bytes.count else { return nil }
+        let end = min(udpLength == 0 ? UInt16(bytes.count) : udpOffset + udpLength, UInt16(bytes.count))
+        guard end > UInt16(payloadStart) else { return nil }
+        return packet.subdata(in: payloadStart..<Int(end))
+    }
+
+    /// 将上游 DNS 响应封装为 IPv4+UDP 包写回隧道（复用查询包的 header，交换源/目）
+    static func response(for query: Query, withDNS payload: Data) -> Data {
+        let bytes = [UInt8](query.original)
+        let ihl = Int(bytes[0] & 0x0F) * 4
+        let udpOffset = ihl
+
+        var out = Data(capacity: ihl + 8 + payload.count)
+        // IPv4 header（前 ihl 字节）
+        out.append(query.original.prefix(ihl))
+        var hdr = [UInt8](out)
+        // total length
+        let total = ihl + 8 + payload.count
+        hdr[2] = UInt8((total >> 8) & 0xFF)
+        hdr[3] = UInt8(total & 0xFF)
+        // 交换源/目的 IP
+        for i in 0..<4 {
+            let src = hdr[12 + i]
+            hdr[12 + i] = hdr[16 + i]
+            hdr[16 + i] = src
+        }
+        // IPv4 checksum
+        hdr[10] = 0
+        hdr[11] = 0
+        let checksum = ipv4Checksum(hdr, count: ihl)
+        hdr[10] = UInt8((checksum >> 8) & 0xFF)
+        hdr[11] = UInt8(checksum & 0xFF)
+        out = Data(hdr)
+
+        // UDP header：源端口 53，目的端口 = 原查询源端口
+        var udp = [UInt8](repeating: 0, count: 8)
+        udp[0] = 0
+        udp[1] = 53
+        let origSport = (UInt16(bytes[udpOffset + 2]) << 8) | UInt16(bytes[udpOffset + 3])
+        udp[2] = UInt8((origSport >> 8) & 0xFF)
+        udp[3] = UInt8(origSport & 0xFF)
+        let ulen = 8 + payload.count
+        udp[4] = UInt8((ulen >> 8) & 0xFF)
+        udp[5] = UInt8(ulen & 0xFF)
+        // UDP checksum 置 0（IPv4 允许）
+        udp[6] = 0
+        udp[7] = 0
+        out.append(Data(udp))
+        out.append(payload)
+        return out
+    }
 }
